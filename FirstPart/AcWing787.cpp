@@ -1,13 +1,11 @@
+#include <cstdio>
 #include <iostream>
-#include <stdio.h>
 
 const int N = 1000010;
 int n = 0, q[N], tmp[N];
 
-void merge_sort(int q[], int l, int r)
-{
-    if (l >= r)
-        return;
+void merge_sort(int q[], int l, int r) {
+    if (l >= r) return;
 
     int mid = l + r >> 1;
     merge_sort(q, l, mid);
@@ -19,27 +17,21 @@ void merge_sort(int q[], int l, int r)
             tmp[k++] = q[i++];
         else
             tmp[k++] = q[j++];
-    while (i <= mid)
-        tmp[k++] = q[i++];
-    while (j <= r)
-        tmp[k++] = q[j++];
+    while (i <= mid) tmp[k++] = q[i++];
+    while (j <= r) tmp[k++] = q[j++];
 
-    for (int i = l, j = 0; i <= r; i++, j++)
-        q[i] = tmp[j];
+    for (int i = l, j = 0; i <= r; i++, j++) q[i] = tmp[j];
 }
 
-int main()
-{
+int main() {
     scanf("%d", &n);
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         scanf("%d", &q[i]);
     }
 
     merge_sort(q, 0, n - 1);
 
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         printf("%d ", q[i]);
     }
 
