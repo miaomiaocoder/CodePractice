@@ -1,17 +1,16 @@
-#include <cstdio>
 #include <iostream>
 
 using namespace std;
 
-const int N = 100010;
+const int N = 1e6 + 10;
 
-int n, m;
+int n, k;
 int q[N];
 
-void quick_sort(int q[], int l, int r) {
-    if (l >= r) return;
+int quick_sort(int l, int r, int k) {
+    if (l == r) return q[l];
 
-    int i = l - 1, j = r + 1, x = q[l + r >> 1];
+    int x = q[l + r >> 1], i = l - 1, j = r + 1;
     while (i < j) {
         do i++;
         while (q[i] < x);
@@ -19,17 +18,17 @@ void quick_sort(int q[], int l, int r) {
         while (q[j] > x);
         if (i < j) swap(q[i], q[j]);
     }
-    quick_sort(q, l, j);
-    quick_sort(q, j + 1, r);
+    int sl = j - l + 1;
+    if (k <= sl) return quick_sort(l, j, k);
+    return quick_sort(j + 1, r, k - sl);
 }
 
 int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 0; i < n; i++) scanf("%d", &q[i]);
+    cin >> n >> k;
 
-    quick_sort(q, 0, n - 1);
+    for (int i = 0; i < n; i++) cin >> q[i];
 
-    cout << q[m - 1];
+    cout << quick_sort(0, n - 1, k) << endl;
 
     return 0;
 }
