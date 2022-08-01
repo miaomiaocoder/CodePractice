@@ -1,4 +1,5 @@
-#include <cstdio>
+#include <stdio.h>
+
 #include <iostream>
 
 using namespace std;
@@ -19,10 +20,10 @@ int main() {
     scanf("%d%d%d", &n, &m, &q);
 
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++) scanf("%d", &a[i][j]);
-
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++) insert(i, j, i, j, a[i][j]);
+        for (int j = 1; j <= m; j++) {
+            scanf("%d", &a[i][j]);
+            insert(i, j, i, j, a[i][j]);
+        }
 
     while (q--) {
         int x1, y1, x2, y2, c;
@@ -30,12 +31,11 @@ int main() {
         insert(x1, y1, x2, y2, c);
     }
 
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            b[i][j] += b[i - 1][j] + b[i][j - 1] - b[i - 1][j - 1];
-
     for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) printf("%d ", b[i][j]);
+        for (int j = 1; j <= m; j++) {
+            b[i][j] += b[i - 1][j] + b[i][j - 1] - b[i - 1][j - 1];
+            cout << b[i][j] << " ";
+        }
         puts("");
     }
 
