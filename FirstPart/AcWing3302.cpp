@@ -46,7 +46,8 @@ int main() {
             while (op.top() != '(') eval();
             op.pop();
         } else {
-            while (op.size() && op.top() != '(' && pr[op.top()] >= pr[c]) eval();
+            while (op.size() && op.top() != '(' && pr[op.top()] >= pr[c])
+                eval();
             op.push(c);
         }
     }
