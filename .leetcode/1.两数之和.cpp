@@ -6,17 +6,21 @@
 
 // @lc code=start
 class Solution {
-public:
+   public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        for(auto i=0 ;i < nums.size() - 1; i++){
-            for(auto j = i + 1; j< nums.size() ; j++){
-                if((nums[i] + nums[j]) == target){
-                    return {i, j};
-                }    
+        vector<int> res;
+        unordered_map<int, int> hash;
+        for (int i = 0; i <= nums.size(); i++) {
+            int r = target - nums[i];
+            if (hash.count(r)) {
+                res.push_back(hash[r]);
+                res.push_back(i);
+                break;
             }
+            hash[nums[i]] = i;
         }
-        return {};
+        return res;
     }
 };
-// @lc code=end
 
+// @lc code=end

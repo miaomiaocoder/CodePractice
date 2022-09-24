@@ -16,32 +16,18 @@
  * };
  */
 class Solution {
-public:
-ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* p = l1;
-        ListNode* q = l2;
-        ListNode* l3 = new ListNode(0);
-        ListNode* r = l3;
-        int carry = 0;
-        int sum = 0;
-        while(p!=nullptr || q!=nullptr){
-            int x = 0;
-            int y = 0;
-            x = (p?p->val:0);
-            y = (q?q->val:0);
-            sum = x + y + carry;
-            carry = sum/10;
-            r->next = new ListNode(sum%10);
-            r = r->next;
-            if(q)q = q->next;
-            if(p)p = p->next;
+   public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* res = new ListNode(-1);
+        ListNode* cur = res;
+        int t = 0;
+        while (t || l1 || l2) {
+            if (l1) t += l1->val, l1 = l1->next;
+            if (l2) t += l2->val, l2 = l2->next;
+            cur = cur->next = new ListNode(t % 10);
+            t /= 10;
         }
-        if(carry > 0){
-            r->next = new ListNode(carry);
-            r = r->next;
-        }
-        return l3->next;
+        return res->next;
     }
 };
 // @lc code=end
-
