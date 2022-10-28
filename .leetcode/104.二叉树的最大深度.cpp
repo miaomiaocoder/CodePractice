@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=102 lang=cpp
+ * @lc app=leetcode.cn id=104 lang=cpp
  *
- * [102] 二叉树的层序遍历
+ * [104] 二叉树的最大深度
  */
 
 // @lc code=start
@@ -17,43 +17,48 @@
  * right(right) {}
  * };
  */
-// 递归法
 class Solution {
    public:
-    vector<vector<int>> res;
-    void dfs(TreeNode* cur, int d) {
-        if (cur == nullptr) return;
-        if (d == res.size()) res.push_back(vector<int>());
-        res[d].push_back(cur->val);
-        dfs(cur->left, d + 1);
-        dfs(cur->right, d + 1);
-    }
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        dfs(root, 0);
-        return res;
+    int maxDepth(TreeNode* root) {
+        if (!root) return 0;
+        return max(maxDepth(root->left), maxDepth(root->right)) + 1;
     }
 };
 
-// bfs
 class Solution {
    public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> res;
+    int maxd = 0;
+    void dfs(TreeNode* root, int d) {
+        if (!root) return;
+        maxd = max(maxd, d);
+        dfs(root->left, d + 1);
+        dfs(root->right, d + 1);
+    }
+    int maxDepth(TreeNode* root) {
+        dfs(root, 1);
+        return maxd;
+    }
+};
+
+// 使用队列进行层序遍历
+class Solution {
+   public:
+    int maxDepth(TreeNode* root) {
+        int maxd = 0;
         queue<TreeNode*> q;
-        if (root) q.push(root);
+        if (!root) return maxd;
+        q.push(root);
         while (q.size()) {
             int len = q.size();
-            vector<int> vec;
+            maxd++;
             while (len--) {
                 TreeNode* t = q.front();
                 q.pop();
-                vec.push_back(t->val);
                 if (t->left) q.push(t->left);
                 if (t->right) q.push(t->right);
             }
-            res.push_back(vec);
         }
-        return res;
+        return maxd;
     }
 };
 // @lc code=end
