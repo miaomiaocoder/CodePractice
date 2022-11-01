@@ -17,6 +17,7 @@
  * right(right) {}
  * };
  */
+// 递归
 class Solution {
    public:
     int maxDepth(TreeNode* root) {
@@ -25,6 +26,7 @@ class Solution {
     }
 };
 
+// dfs
 class Solution {
    public:
     int maxd = 0;
