@@ -19,6 +19,17 @@
  */
 class Solution {
    public:
+    int sumOfLeftLeaves(TreeNode* root) {
+        int res = 0;
+        if (!root) return 0;
+        if (root->left && !root->left->left && !root->left->right)
+            res = root->left->val;
+        return res + sumOfLeftLeaves(root->left) + sumOfLeftLeaves(root->right);
+    }
+};
+
+class Solution {
+   public:
     int sum = 0;
     int sumOfLeftLeaves(TreeNode* root) {
         dfs(root);
