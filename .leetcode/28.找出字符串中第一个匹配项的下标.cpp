@@ -7,10 +7,10 @@
 // @lc code=start
 class Solution {
    public:
-    int strStr(string s, string p) {
-        if (p.empty()) return 0;
-        int n = s.size(), m = p.size();
-        s = ' ' + s, p = ' ' + p;
+    int strStr(string haystack, string needle) {
+        int n = haystack.size(), m = needle.size();
+        string s = " " + haystack, p = " " + needle;
+
         vector<int> next(m + 1);
         for (int i = 2, j = 0; i <= m; i++) {
             while (j && p[i] != p[j + 1]) j = next[j];
@@ -23,6 +23,7 @@ class Solution {
             if (s[i] == p[j + 1]) j++;
             if (j == m) return i - m;
         }
+
         return -1;
     }
 };
