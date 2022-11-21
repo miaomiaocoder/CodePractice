@@ -25,6 +25,7 @@ class Solution {
 
         for (int i = start; i < s.size(); i++) {
             if (isPlainrome(s, start, i))
+                // 获取[start, i]在s中的子串
                 path.emplace_back(s.substr(start, i - start + 1));
             else
                 continue;
