@@ -5,6 +5,13 @@
  */
 
 // @lc code=start
+/*
+    没有操作
+    第一次持有股票
+    第一次不持有股票
+    第二次持有股票
+    第二次不持有股票
+*/
 class Solution {
    public:
     int maxProfit(vector<int>& prices) {

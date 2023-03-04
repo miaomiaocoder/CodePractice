@@ -20,4 +20,18 @@ class Solution {
         return res;
     }
 };
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices, int fee) {
+        int len = prices.size();
+        vector<vector<int>> f(len, vector<int>(2, 0));
+        f[0][0] -= prices[0];
+        for (int i = 1; i < len; i++) {
+            f[i][0] = max(f[i - 1][0], f[i - 1][1] - prices[i]);
+            f[i][1] = max(f[i - 1][1], f[i - 1][0] + prices[i] - fee);
+        }
+        return max(f[len - 1][0], f[len - 1][1]);
+    }
+};
 // @lc code=end
