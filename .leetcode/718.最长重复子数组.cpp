@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// f[i][j] ：以下标i - 1为结尾的A，和以下标j - 1为结尾的B，最长重复子数组长度为f[i][j]
 class Solution {
 public:
     int findLength(vector<int>& nums1, vector<int>& nums2) {
