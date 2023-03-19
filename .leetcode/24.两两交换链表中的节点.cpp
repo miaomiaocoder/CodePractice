@@ -39,7 +39,7 @@ class Solution {
         for (ListNode* p = dummy; p->next && p->next->next;) {
             ListNode* a = p->next;
             ListNode* b = p->next->next;
-            p->next = b;
+            p->next = b;  // 这一步很关键
             a->next = b->next;
             b->next = a;
             p = a;

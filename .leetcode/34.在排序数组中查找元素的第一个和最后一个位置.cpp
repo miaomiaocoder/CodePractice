@@ -8,8 +8,6 @@
 class Solution {
    public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        if (nums.empty()) return {-1, -1};
-        int res1, res2;
         int l = 0, r = nums.size() - 1;
         while (l < r) {
             int mid = l + r >> 1;
@@ -18,7 +16,8 @@ class Solution {
             else
                 l = mid + 1;
         }
-        res1 = l;
+        int start = l;
+
         l = 0, r = nums.size() - 1;
         while (l < r) {
             int mid = l + r + 1 >> 1;
@@ -27,9 +26,11 @@ class Solution {
             else
                 r = mid - 1;
         }
-        res2 = r;
-        if (nums[res1] != target) return {-1, -1};
-        return {res1, res2};
+        int end = l;
+
+        if (nums.empty() || nums[start] != target) return {-1, -1};
+
+        return {start, end};
     }
 };
 // @lc code=end
