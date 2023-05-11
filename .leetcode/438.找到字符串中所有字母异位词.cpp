@@ -15,8 +15,10 @@ class Solution {
         int len = hash.size();
         for (int i = 0, j = 0, cnt = 0; i < s.size(); i++) {
             if (--hash[s[i]] == 0) cnt++;
-            while (i - j + 1 > p.size())
-                if (hash[s[j++]]++ == 0) cnt--;
+            while (i - j + 1 > p.size()) {
+                if (hash[s[j]] == 0) cnt--;
+                ++hash[s[j++]];
+            }
             if (cnt == len) res.push_back(j);
         }
         return res;
