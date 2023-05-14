@@ -17,6 +17,8 @@ class Solution {
     }
 };
 
+
+// 包括下标i之前的最大连续子序列和为f[i]。
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
