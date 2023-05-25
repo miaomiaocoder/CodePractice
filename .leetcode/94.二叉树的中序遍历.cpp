@@ -46,7 +46,7 @@ class Solution {
             }
             root = stk.top();
             stk.pop();
-            res.push_back(root->val);
+            res.emplace_back(root->val);
             root = root->right;
         }
         return res;

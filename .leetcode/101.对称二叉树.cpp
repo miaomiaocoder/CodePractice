@@ -20,14 +20,14 @@
 // 递归结点u存在时候，u的左节点p的左子树和右节点q的右子树应该对称，p->right和q->left应该对称
 class Solution {
    public:
-    bool dfs(TreeNode* p, TreeNode* q) {
+    bool compare(TreeNode* p, TreeNode* q) {
         if (!p && !q) return true;
-        if (!p || !q || p->val != q->val) return false;
-        return dfs(p->left, q->right) && dfs(p->right, q->left);
+        if (!p || !q || (p->val != q->val)) return false;
+        return compare(p->left, q->right) && compare(p->right, q->left);
     }
+
     bool isSymmetric(TreeNode* root) {
-        if (!root) return true;
-        return dfs(root->left, root->right);
+        return compare(root->left, root->right);
     }
 };
 
