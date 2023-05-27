@@ -41,8 +41,8 @@ class Solution {
         stack<TreeNode*> stk;
         while (root || stk.size()) {
             while (root) {
-                res.push_back(root->val);
-                stk.push(root);
+                res.emplace_back(root->val);
+                stk.emplace(root);
                 root = root->right;
             }
             root = stk.top()->left;

@@ -35,20 +35,20 @@ class Solution {
 
 // 中序遍历迭代写法
 class Solution {
-   public:
+public:
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> res;
         stack<TreeNode*> stk;
-        while (root || stk.size()) {
-            while (root) {
-                stk.push(root);
+        while (stk.size() || root) {
+            while(root) {
+                stk.emplace(root);
                 root = root->left;
             }
             root = stk.top();
             stk.pop();
             res.emplace_back(root->val);
             root = root->right;
-        }
+        }   
         return res;
     }
 };
