@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 前缀和+哈希表
 class Solution {
    public:
     int subarraySum(vector<int>& nums, int k) {
