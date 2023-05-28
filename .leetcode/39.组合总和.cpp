@@ -28,6 +28,8 @@ class Solution {
 
    public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        res.clear();
+        path.clear();
         getCombinations(candidates, target, 0);
         return res;
     }
@@ -57,6 +59,8 @@ class Solution {
 
    public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        res.clear();
+        path.clear();
         getCombinations(candidates, target, 0, 0);
         return res;
     }
@@ -87,6 +91,8 @@ class Solution {
 
    public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        res.clear();
+        path.clear();
         sort(candidates.begin(), candidates.end());
         getCombinations(candidates, target, 0, 0);
         return res;

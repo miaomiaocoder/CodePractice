@@ -23,6 +23,8 @@ class Solution {
 
    public:
     vector<vector<int>> subsets(vector<int>& nums) {
+        res.clear();
+        path.clear();
         backtrack(nums, 0);
         return res;
     }
