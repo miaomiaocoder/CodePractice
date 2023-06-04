@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 从下到上，从左到右遍历
 class Solution {
    public:
     int countSubstrings(string s) {
@@ -23,6 +24,22 @@ class Solution {
                 }
             }
         }
+        return res;
+    }
+};
+
+class Solution {
+   public:
+    int countSubstrings(string s) {
+        vector<vector<int>> f(s.size(), vector<int>(s.size(), 0));
+        int res = 0;
+        for (int i = s.size() - 1; i >= 0; --i)
+            for (int j = i; j < s.size(); ++j) {
+                if (s[i] == s[j] && (j - i <= 1 || f[i + 1][j - 1])) {
+                    res++;
+                    f[i][j] = 1;
+                }
+            }
         return res;
     }
 };

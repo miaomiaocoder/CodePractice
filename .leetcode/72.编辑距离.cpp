@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// f[i][j] 表示以下标i-1为结尾的字符串word1，和以下标j-1为结尾的字符串word2，最近编辑距离为f[i][j]。
 class Solution {
    public:
     int minDistance(string word1, string word2) {

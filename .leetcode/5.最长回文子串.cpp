@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 从下到上，从左到右遍历
 class Solution {
    public:
     string longestPalindrome(string s) {

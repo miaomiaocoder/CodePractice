@@ -6,6 +6,7 @@
 
 // @lc code=start
 // https://www.acwing.com/solution/content/107/
+// 设状态 f(i)表示到达 i所需要的最少步数
 class Solution {
    public:
     int jump(vector<int>& nums) {

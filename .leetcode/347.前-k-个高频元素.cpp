@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 小根堆时间复杂度是O(nlogk)，大根堆是O(nlogn)
 // 维护一个大小为k的小根堆
 class Solution {
    public:
@@ -26,6 +27,34 @@ class Solution {
         vector<int> res;
         for (int i = 0; i < k; i++) {
             res.push_back(heap.top().second);
+            heap.pop();
+        }
+        return res;
+    }
+};
+
+// 维护一个大小为k的小根堆
+class Solution {
+    struct cmp {
+        bool operator()(const pair<int, int> &a, const pair<int, int> &b) {
+            return a.second > b.second;
+        }
+    };
+
+   public:
+    vector<int> topKFrequent(vector<int> &nums, int k) {
+        unordered_map<int, int> hash;
+        for (auto x : nums) hash[x]++;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> heap;
+        for (auto &x : hash) {
+            heap.push(x);
+            if (heap.size() > k) {
+                heap.pop();
+            }
+        }
+        vector<int> res;
+        for (int i = 0; i < k; ++i) {
+            res.emplace_back(heap.top().first);
             heap.pop();
         }
         return res;
