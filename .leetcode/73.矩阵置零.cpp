@@ -10,11 +10,11 @@ class Solution {
     void setZeroes(vector<vector<int>>& matrix) {
         int m = matrix.size(), n = matrix[0].size();
 
-        int r0 = 1, c0 = 1;
+        int c0 = 1, r0 = 1;
         for (int i = 0; i < m; ++i)
-            if (!matrix[i][0]) r0 = 0;
+            if (!matrix[i][0]) c0 = 0;
         for (int j = 0; j < n; ++j)
-            if (!matrix[0][j]) c0 = 0;
+            if (!matrix[0][j]) r0 = 0;
 
         for (int i = 1; i < m; ++i)
             for (int j = 0; j < n; ++j)
@@ -32,9 +32,9 @@ class Solution {
             if (!matrix[0][i])
                 for (int j = 0; j < m; ++j) matrix[j][i] = 0;
 
-        if (!r0)
-            for (int i = 0; i < m; ++i) matrix[i][0] = 0;
         if (!c0)
+            for (int i = 0; i < m; ++i) matrix[i][0] = 0;
+        if (!r0)
             for (int j = 0; j < n; ++j) matrix[0][j] = 0;
     }
 };

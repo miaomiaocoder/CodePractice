@@ -24,4 +24,22 @@ class Solution {
         return res;
     }
 };
+
+class Solution {
+   public:
+    vector<int> findAnagrams(string s, string p) {
+        vector<int> res;
+        if (p.size() > s.size()) return res;
+        unordered_map<char, int> hashp;
+        for (auto c : p) hashp[c]++;
+        unordered_map<char, int> hashs;
+        int len = p.size();
+        for (int i = 0, j = 0; i < s.size(); ++i) {
+            hashs[s[i]]++;
+            while (hashs[s[i]] > hashp[s[i]]) hashs[s[j++]]--;
+            if (hashs == hashp) res.push_back(i - len + 1);
+        }
+        return res;
+    }
+};
 // @lc code=end
