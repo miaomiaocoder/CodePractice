@@ -69,4 +69,33 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+   public:
+    ListNode* reverse(ListNode* head) {
+        if (!head || !head->next) return head;
+        ListNode* tail = reverse(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return tail;
+    }
+    bool isPalindrome(ListNode* head) {
+        ListNode *fast = head, *slow = head;
+        int i = 0;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            i++;
+        }
+        ListNode* tail = reverse(slow);
+        slow->next = nullptr;
+        while (i--) {
+            if (head->val == tail->val)
+                head = head->next, tail = tail->next;
+            else
+                return false;
+        }
+        return true;
+    }
+};
 // @lc code=end

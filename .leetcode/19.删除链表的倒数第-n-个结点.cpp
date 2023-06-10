@@ -30,4 +30,25 @@ class Solution {
         return dummy->next;
     }
 };
+
+class Solution {
+   public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if (!head->next) return nullptr;
+        ListNode* newHead = new ListNode(-1);
+        newHead->next = head;
+        ListNode *fast = newHead, *slow = newHead;
+        ListNode* pre = newHead;
+        while (n--) {
+            fast = fast->next;
+        }
+        while (fast) {
+            pre = slow;
+            fast = fast->next;
+            slow = slow->next;
+        }
+        pre->next = pre->next->next;
+        return newHead->next;
+    }
+};
 // @lc code=end
