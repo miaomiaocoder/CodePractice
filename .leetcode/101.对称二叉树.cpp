@@ -31,6 +31,21 @@ class Solution {
     }
 };
 
+class Solution {
+    bool compare(TreeNode* p, TreeNode* q) {
+        if (!p && !q) return true;
+        if (!p && q) return false;
+        if (p && !q) return false;
+        if (p->val != q->val) return false;
+        return compare(p->left, q->right) && compare(p->right, q->left);
+    }
+
+   public:
+    bool isSymmetric(TreeNode* root) {
+        return compare(root->left, root->right);
+    }
+};
+
 // 用栈模拟递归，对根节点的左子树，我们用中序遍历；对根节点的右子树，我们用反中序遍历。
 // 则两个子树互为镜像，当且仅当同时遍历两课子树时，对应节点的值相等。
 // 注意要同时遍历

@@ -16,21 +16,21 @@
  * };
  */
 class Solution {
-   public:
     struct Cmp {
         bool operator()(ListNode* a, ListNode* b) { return a->val > b->val; }
     };
 
+   public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         priority_queue<ListNode*, vector<ListNode*>, Cmp> heap;
-        auto dummy = new ListNode(-1), tail = dummy;
         for (auto l : lists)
-            if (l) heap.push(l);
+            if (l) heap.emplace(l);
+        ListNode *dummy = new ListNode(-1), *cur = dummy;
         while (heap.size()) {
             auto t = heap.top();
             heap.pop();
-            tail = tail->next = t;
-            if (t->next) heap.push(t->next);
+            cur = cur->next = t;
+            if (t->next) heap.emplace(t->next);
         }
         return dummy->next;
     }
