@@ -39,4 +39,25 @@ class Solution {
         return res;
     }
 };
+
+class Solution {
+   public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> res;
+        queue<TreeNode*> q;
+        if (!root) return res;
+        q.emplace(root);
+        while (q.size()) {
+            int len = q.size();
+            while (len--) {
+                TreeNode* t = q.front();
+                q.pop();
+                if (t->left) q.emplace(t->left);
+                if (t->right) q.emplace(t->right);
+                if (len == 0) res.emplace_back(t->val);
+            }
+        }
+        return res;
+    }
+};
 // @lc code=end

@@ -20,6 +20,7 @@ class Solution {
         int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1};
 
         int res = 0;
+        // 注意这一步
         if (q.size()) res--;
         while (q.size()) {
             res++;

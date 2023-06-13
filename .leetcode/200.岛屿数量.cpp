@@ -23,7 +23,7 @@ class Solution {
     }
 
     void dfs(int x, int y) {
-        g[x][y] = 0;
+        g[x][y] = '0';
         for (int i = 0; i < 4; i++) {
             int a = x + dx[i], b = y + dy[i];
             if (a >= 0 && a < g.size() && b >= 0 && b < g[a].size() &&

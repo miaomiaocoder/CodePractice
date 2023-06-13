@@ -17,6 +17,7 @@
  * right(right) {}
  * };
  */
+// 和leetcode104题目很像，只不过这个是要考虑加节点值（注意负数情况）
 class Solution {
     int ans;
 
@@ -32,6 +33,22 @@ class Solution {
         int left = max(0, dfs(cur->left)), right = max(0, dfs(cur->right));
         ans = max(ans, cur->val + left + right);
         return cur->val + max(left, right);
+    }
+};
+
+class Solution {
+    int res = INT_MIN;
+    int dfs(TreeNode* root) {
+        if (!root) return 0;
+        int left = max(0, dfs(root->left));
+        int right = max(0, dfs(root->right));
+        res = max(res, left + right + root->val);
+        return max(left, right) + root->val;
+    }
+public:
+    int maxPathSum(TreeNode* root) {
+        dfs(root);
+        return res;
     }
 };
 // @lc code=end
