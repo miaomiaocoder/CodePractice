@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 拓扑排序
 class Solution {
    public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
@@ -15,11 +16,13 @@ class Solution {
         for (auto e : edges) {
             int b = e[0], a = e[1];
             g[a].push_back(b);
+            // 统计每个点入度
             d[b]++;
         }
 
         queue<int> q;
         for (int i = 0; i < n; ++i)
+            // 将入度为0的点插入队列
             if (d[i] == 0) q.push(i);
 
         int cnt = 0;
