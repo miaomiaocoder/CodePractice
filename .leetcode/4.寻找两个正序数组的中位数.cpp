@@ -24,6 +24,7 @@ class Solution {
             return find(nums2, j, nums1, i, k);
         if (k == 1) {
             if (nums1.size() == i)
+                // 应该是nums2[j + k - 1]
                 return nums2[j];
             else
                 return min(nums1[i], nums2[j]);
