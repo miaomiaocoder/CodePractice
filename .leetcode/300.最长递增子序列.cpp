@@ -5,6 +5,8 @@
  */
 
 // @lc code=start
+// f[i]表示i之前包括i的以nums[i]结尾的最长递增子序列的长度
+// 注意这里的定义，一定是以下标i为结尾，并不是说一定以下标0为起始位置。
 class Solution {
    public:
     int lengthOfLIS(vector<int>& nums) {

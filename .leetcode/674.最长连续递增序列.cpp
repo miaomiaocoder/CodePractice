@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// f[i]：以下标i为结尾的连续递增的子序列长度为f[i]。
 class Solution {
    public:
     int findLengthOfLCIS(vector<int>& nums) {

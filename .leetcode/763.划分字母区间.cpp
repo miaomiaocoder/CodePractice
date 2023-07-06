@@ -18,7 +18,7 @@ class Solution {
         for (int i = 0; i < s.size(); i++) {
             end = max(end, last[s[i]]);
             if (i == end) {
-                res.push_back(end - start + 1);
+                res.emplace_back(end - start + 1);
                 start = end = i + 1;
             }
         }

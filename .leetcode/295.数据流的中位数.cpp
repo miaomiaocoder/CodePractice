@@ -15,15 +15,15 @@ class MedianFinder {
 
     void addNum(int num) {
         if (down.empty() || num < down.top()) {
-            down.push(num);
+            down.emplace(num);
             if (down.size() > up.size() + 1) {
-                up.push(down.top());
+                up.emplace(down.top());
                 down.pop();
             }
         } else {
-            up.push(num);
+            up.emplace(num);
             if (up.size() > down.size()) {
-                down.push(up.top());
+                down.emplace(up.top());
                 up.pop();
             }
         }
@@ -33,7 +33,7 @@ class MedianFinder {
         if ((down.size() + up.size()) % 2 != 0)
             return down.top();
         else
-            return (down.top() + up.top()) / 2.0;
+            return (up.top() + down.top()) / 2.0;
     }
 };
 /**
