@@ -13,6 +13,8 @@ class Solution {
             for (int j = nums.size() - 1; j > i; j--) {
                 if (nums[j] > nums[i]) {
                     swap(nums[j], nums[i]);
+                    // 这时已经把nums[j]换过来了到了i的位置，只要让i + 1
+                    // 之后保持有序即可
                     reverse(nums.begin() + i + 1, nums.end());
                     return;
                 }

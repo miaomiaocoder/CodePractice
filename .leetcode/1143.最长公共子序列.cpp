@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// f[i][j]：长度为[0, i - 1]的字符串text1与长度为[0, j - 1]的字符串text2的最长公共子序列为f[i][j]
 class Solution {
    public:
     int longestCommonSubsequence(string text1, string text2) {
@@ -15,6 +16,7 @@ class Solution {
                 if (text1[i - 1] == text2[j - 1]) {
                     f[i][j] = f[i - 1][j - 1] + 1;
                 } else {
+                    // 注意这里的else，状态是从 f[i - 1][j] 或者 f[i][j - 1] 转移过来的
                     f[i][j] = max(f[i - 1][j], f[i][j - 1]);
                 }
             }

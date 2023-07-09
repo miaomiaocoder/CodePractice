@@ -5,6 +5,8 @@
  */
 
 // @lc code=start
+// 先遍历背包，再遍历物品
+// f[i] : 字符串长度为i的话，f[i]为true，表示s[0:i]可以拆分为一个或多个在字典中出现的单词。
 class Solution {
    public:
     bool wordBreak(string s, vector<string>& wordDict) {

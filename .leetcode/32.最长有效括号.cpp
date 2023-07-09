@@ -11,7 +11,7 @@ public:
         stack<int> stk;
         int res = 0;
 
-        // start 表示上一段第一次出现不合法的括号序列的右括号的位置
+        // start 表示上一段第一次出现不合法的括号序列的右括号的位置，所以start是-1
         for (int i = 0, start = -1; i < s.size(); i ++ ) {
             // 如果是左括号，左括号下标入栈
             if (s[i] == '(') stk.push(i);

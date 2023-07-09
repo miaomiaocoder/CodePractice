@@ -19,6 +19,7 @@ class Solution {
                 if (hash[s[j]] == 0) cnt--;
                 ++hash[s[j++]];
             }
+            // 注意这个比较的len是最开始读取p得到的哈希表的长度，也就是字符的种类数量
             if (cnt == len) res.push_back(j);
         }
         return res;

@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// f[i][j]：字符串s在[i, j]范围内最长的回文子序列的长度为f[i][j]。
 class Solution {
    public:
     int longestPalindromeSubseq(string s) {
