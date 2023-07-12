@@ -22,6 +22,7 @@ class Solution {
 f[i][0] 表示第i天持有股票所得现金。
 f[i][1] 表示第i天不持有股票所得最多现金
 */
+// 动态规划公式，注意与122题目区分
 class Solution {
    public:
     int maxProfit(vector<int>& prices) {

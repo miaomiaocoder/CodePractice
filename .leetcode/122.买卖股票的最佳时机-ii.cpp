@@ -20,15 +20,16 @@ class Solution {
 f[i][0] 表示第i天持有股票所得现金。
 f[i][1] 表示第i天不持有股票所得最多现金
 */
+// 注意与121题目的动态规划递推公式区分
 class Solution {
-public:
+   public:
     int maxProfit(vector<int>& prices) {
         int len = prices.size();
         vector<vector<int>> f(len, vector<int>(2, 0));
         f[0][0] -= prices[0];
         f[0][1] = 0;
         for (int i = 1; i < len; i++) {
-            f[i][0] = max(f[i - 1][0], f[i - 1][1] - prices[i]); 
+            f[i][0] = max(f[i - 1][0], f[i - 1][1] - prices[i]);
             f[i][1] = max(f[i - 1][1], f[i - 1][0] + prices[i]);
         }
         return f[len - 1][1];

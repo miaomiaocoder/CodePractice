@@ -54,4 +54,17 @@ class Solution {
         return res;
     }
 };
+
+class Solution {
+   public:
+    int dfs(TreeNode* root, int preSum) {
+        if (!root) return 0;
+        int sum = preSum * 10 + root->val;
+        if (!root->left && !root->right)
+            return sum;
+        else
+            return dfs(root->left, sum) + dfs(root->right, sum);
+    }
+    int sumNumbers(TreeNode* root) { return dfs(root, 0); }
+};
 // @lc code=end

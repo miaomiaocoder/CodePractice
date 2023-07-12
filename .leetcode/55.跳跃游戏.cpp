@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 注意与45题区别
 class Solution {
 public:
     bool canJump(vector<int>& nums) {

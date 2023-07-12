@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 注意与80题对比
 class Solution {
    public:
     int removeDuplicates(vector<int>& nums) {
