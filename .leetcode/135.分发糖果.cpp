@@ -29,4 +29,24 @@ class Solution {
         return f[x];
     }
 };
+
+class Solution {
+   public:
+    int candy(vector<int>& ratings) {
+        vector<int> candy(ratings.size(), 1);
+
+        // 从前向后
+        for (int i = 1; i < ratings.size(); ++i)
+            if (ratings[i] > ratings[i - 1]) candy[i] = candy[i - 1] + 1;
+
+        // 从后向前和取max是为了利用之前的结果
+        for (int i = ratings.size() - 2; i >= 0; --i)
+            if (ratings[i] > ratings[i + 1])
+                candy[i] = max(candy[i], candy[i + 1] + 1);
+
+        int res;
+        for (int x : candy) res += x;
+        return res;
+    }
+};
 // @lc code=end
