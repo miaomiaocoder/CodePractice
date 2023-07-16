@@ -29,7 +29,8 @@ class Solution {
             else
                 l = mid + 1;
         }
-
+        // 注意这里如果使用 nums[l] 与 target 相比，nums只有一个元素
+        // [1] 0的情况有问题，此时没有进入二分循环
         if (nums[r] == target) return r;
         return -1;
     }

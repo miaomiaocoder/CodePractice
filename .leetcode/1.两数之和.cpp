@@ -30,6 +30,7 @@ class Solution {
         for (int i = 0; i < nums.size(); i++) {
             int r = target - nums[i];
             if (hash.count(r)) return {hash[r], i};
+            // 注意哈希表存的是 {值，下标} 的形式
             hash[nums[i]] = i;
         }
         return {};
