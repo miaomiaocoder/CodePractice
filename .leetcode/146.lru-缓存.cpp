@@ -169,6 +169,77 @@ class LRUCache {
         return node;
     }
 };
+
+class LRUCache {
+    struct Node {
+        int key_, value_;
+        Node *prev, *next;
+        Node() : prev(nullptr), next(nullptr), key_(0), value_(0) {}
+        Node(int key, int value)
+            : prev(nullptr), next(nullptr), key_(key), value_(value) {}
+    } *head, *tail;
+    int capacity_;
+    unordered_map<int, Node*> hashMap_;
+    void insert(int key, int value) {
+        Node* node = new Node(key, value);
+        hashMap_[key] = node;
+        addToHead(node);
+    }
+    void addToHead(Node* node) {
+        node->prev = head;
+        node->next = head->next;
+        head->next->prev = node;
+        head->next = node;
+    }
+    void removeNode(Node* node) {
+        node->prev->next = node->next;
+        node->next->prev = node->prev;
+    }
+    Node* removeTail() {
+        Node* node = tail->prev;
+        removeNode(node);
+        return node;
+    }
+
+   public:
+    LRUCache(int capacity) : capacity_(capacity) {
+        head = new Node();
+        tail = new Node();
+        head->next = tail;
+        tail->prev = head;
+    }
+
+    int get(int key) {
+        auto it = hashMap_.find(key);
+        if (it != hashMap_.end()) {
+            Node* node = hashMap_[key];
+            removeNode(node);
+            addToHead(node);
+            return node->value_;
+        }
+        return -1;
+    }
+
+    void put(int key, int value) {
+        if (get(key) != -1) {
+            Node* node = hashMap_[key];
+            node->value_ = value;
+            return;
+        }
+
+        if (hashMap_.size() < capacity_) {
+            insert(key, value);
+            return;
+        } else {
+            Node* removed = removeTail();
+            hashMap_.erase(removed->key_);
+            delete removed;
+
+            insert(key, value);
+        }
+    }
+};
+
 /**
  * Your LRUCache object will be instantiated and called as such:
  * LRUCache* obj = new LRUCache(capacity);

@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 注意是从大到小排序
 class Solution {
     int quick_sort(vector<int>& nums, int l, int r, int k) {
         if (l == r) return nums[k];
