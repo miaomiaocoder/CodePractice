@@ -23,6 +23,7 @@ class Solution {
         auto p = dummy;
         while (true) {
             auto cur = p->next;
+            // 注意这里for循环条件
             for (int i = 0; i < k - 1 && cur; ++i) cur = cur->next;
             if (!cur) break;
             auto a = p->next, b = p->next->next;

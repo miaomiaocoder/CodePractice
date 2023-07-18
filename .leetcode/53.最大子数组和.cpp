@@ -24,6 +24,7 @@ public:
     int maxSubArray(vector<int>& nums) {
         vector<int> f(nums.size(), 0);
         f[0] = nums[0];
+        // 注意这里res初始化为nums[0]
         int res = nums[0];
         for (int i = 1; i < nums.size(); i++) {
             f[i] = max(f[i - 1] + nums[i], nums[i]);

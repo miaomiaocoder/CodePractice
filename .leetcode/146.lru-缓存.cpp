@@ -110,6 +110,7 @@ class LRUCache {
     }
 
    public:
+    // 谨记初始化
     LRUCache(int capacity) : capacity_(capacity) {
         // 使用伪头部和伪尾部节点
         head = new Node();
@@ -202,6 +203,7 @@ class LRUCache {
     }
 
    public:
+    // 谨记初始化
     LRUCache(int capacity) : capacity_(capacity) {
         head = new Node();
         tail = new Node();
