@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 注意这道题条件 i >= 0 j >= 0 避免一些边界条件
 class Solution {
    public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {

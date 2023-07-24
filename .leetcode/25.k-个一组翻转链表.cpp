@@ -15,6 +15,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// 与92题处理类似
 class Solution {
    public:
     ListNode* reverseKGroup(ListNode* head, int k) {

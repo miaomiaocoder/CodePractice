@@ -52,9 +52,9 @@ class Solution {
             while (len--) {
                 TreeNode* t = q.front();
                 q.pop();
-                if (t->left) q.emplace(t->left);
-                if (t->right) q.emplace(t->right);
                 if (len == 0) res.emplace_back(t->val);
+                if (t->left) q.emplace(t->left);
+                if (t->right) q.emplace(t->right);        
             }
         }
         return res;

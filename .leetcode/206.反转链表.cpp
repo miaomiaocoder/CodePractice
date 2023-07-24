@@ -40,6 +40,7 @@ class Solution {
             a = b;
             b = tmp;
         }
+        // 迭代写法注意这一步
         head->next = nullptr;
         return a;
     }

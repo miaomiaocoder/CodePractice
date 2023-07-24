@@ -17,6 +17,7 @@
  * right(right) {}
  * };
  */
+// 94中序 144前序 145后序
 // 递归遍历
 class Solution {
    public:
