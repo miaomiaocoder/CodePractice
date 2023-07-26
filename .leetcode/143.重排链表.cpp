@@ -48,7 +48,7 @@ class Solution {
 };
 
 class Solution {
-public:
+   public:
     void reorderList(ListNode* head) {
         deque<ListNode*> deq;
         ListNode* cur = head;
@@ -73,6 +73,42 @@ public:
         }
         // 不要忘记处理末尾
         cur->next = nullptr;
+    }
+};
+
+// 寻找链表中点 + 链表逆序 + 合并链表  O(1)
+class Solution {
+   public:
+    ListNode* reverseList(ListNode* head) {
+        if (!head || !head->next) return head;
+        ListNode* tail = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return tail;
+    }
+    void reorderList(ListNode* head) {
+        if (!head) return;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while (fast->next != nullptr && fast->next->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* mid = slow;
+        ListNode* cur1 = head;
+        ListNode* cur2 = reverseList(mid->next);
+        // 注意取反之后这个地方要置为空
+        mid->next = nullptr;
+        while (cur1 && cur2) {
+            ListNode* tmp1 = cur1->next;
+            ListNode* tmp2 = cur2->next;
+
+            cur1->next = cur2;
+            cur1 = tmp1;
+
+            cur2->next = cur1;
+            cur2 = tmp2;
+        }
     }
 };
 // @lc code=end

@@ -42,4 +42,18 @@ class Solution {
         return false;
     }
 };
+
+class Solution {
+   public:
+    bool hasCycle(ListNode* head) {
+        ListNode *slow = head, *fast = head;
+        while (fast) {
+            if (!fast->next) break;
+            fast = fast->next->next;
+            slow = slow->next;
+            if (fast == slow) return true;
+        }
+        return false;
+    }
+};
 // @lc code=end
