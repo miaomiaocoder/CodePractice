@@ -15,6 +15,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// 设立一个伪头节点问题容易解决
 class Solution {
    public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
@@ -49,6 +50,25 @@ class Solution {
         }
         pre->next = pre->next->next;
         return newHead->next;
+    }
+};
+
+class Solution {
+   public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        int k = 0;
+        ListNode* cur = head;
+        while (cur) {
+            cur = cur->next;
+            ++k;
+        }
+        ListNode* dummy = new ListNode(-1);
+        dummy->next = head;
+        cur = dummy;
+        int t = k - n;
+        for (int i = 0; i < t; ++i) cur = cur->next;
+        cur->next = cur->next->next;
+        return dummy->next;
     }
 };
 // @lc code=end

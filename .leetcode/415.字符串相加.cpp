@@ -24,4 +24,25 @@ class Solution {
         return res;
     }
 };
+
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        int i = num1.size() - 1, j = num2.size() - 1;
+        int t = 0;
+        string res = "";
+        while (i >= 0 || j >= 0 || t > 0) {
+            int a = 0, b = 0;
+            if (i >= 0) a = num1[i] - '0';
+            if (j >= 0) b = num2[j] - '0';
+            int num = a + b + t;
+            t = num / 10; 
+            res += to_string(num % 10);
+            --i;
+            --j;
+        }
+        reverse(res.begin(), res.end());
+        return res;
+    }
+};
 // @lc code=end

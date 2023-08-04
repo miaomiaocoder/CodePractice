@@ -17,6 +17,7 @@
  * right(right) {}
  * };
  */
+// 543, 124, 104 可以一起看
 // 和leetcode104题目很像，只不过这个是要考虑加节点值（注意负数情况）
 class Solution {
     int ans;
@@ -30,6 +31,7 @@ class Solution {
 
     int dfs(TreeNode* cur) {
         if (!cur) return 0;
+        // 注意考虑负数情况，所以要用max
         int left = max(0, dfs(cur->left)), right = max(0, dfs(cur->right));
         ans = max(ans, cur->val + left + right);
         return cur->val + max(left, right);
@@ -45,7 +47,8 @@ class Solution {
         res = max(res, left + right + root->val);
         return max(left, right) + root->val;
     }
-public:
+
+   public:
     int maxPathSum(TreeNode* root) {
         dfs(root);
         return res;

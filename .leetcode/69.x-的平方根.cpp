@@ -19,4 +19,19 @@ class Solution {
         return r;
     }
 };
+
+class Solution {
+   public:
+    int mySqrt(int x) {
+        long long l = 0, r = x;
+        while (l < r) {
+            long long mid = l + 1 + r >> 1;
+            if (mid * mid <= x)
+                l = mid;
+            else
+                r = mid - 1;
+        }
+        return r;
+    }
+};
 // @lc code=end

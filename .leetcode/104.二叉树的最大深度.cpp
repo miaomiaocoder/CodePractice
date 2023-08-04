@@ -17,6 +17,7 @@
  * right(right) {}
  * };
  */
+// 543, 124, 104 可以一起看
 // 递归
 class Solution {
    public:
@@ -74,6 +75,23 @@ class Solution {
             }
         }
         return maxd;
+    }
+};
+
+// 类似543
+class Solution {
+    int res = 0;
+    int dfs(TreeNode* root) {
+        if (!root) return 0;
+        int left = dfs(root->left), right = dfs(root->right);
+        res = max(left + 1, max(right + 1, res));
+        return max(left, right) + 1;
+    }
+
+   public:
+    int maxDepth(TreeNode* root) {
+        dfs(root);
+        return res;
     }
 };
 // @lc code=end

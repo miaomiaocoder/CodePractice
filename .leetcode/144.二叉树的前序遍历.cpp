@@ -52,4 +52,24 @@ class Solution {
         return res;
     }
 };
+
+class Solution {
+   public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode*> stk;
+        if (!root) return res;
+        while (stk.size() || root) {
+            while (root) {
+                res.emplace_back(root->val);
+                stk.emplace(root);
+                root = root->left;
+            }
+            root = stk.top();
+            stk.pop();
+            root = root->right;
+        }
+        return res;
+    }
+};
 // @lc code=end

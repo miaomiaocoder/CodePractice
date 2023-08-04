@@ -17,6 +17,7 @@
  * right(right) {}
  * };
  */
+// 543, 124, 104 可以一起看
 class Solution {
     int res = 0;
 

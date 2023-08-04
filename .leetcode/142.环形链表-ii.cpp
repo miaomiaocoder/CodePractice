@@ -31,4 +31,25 @@ class Solution {
         return nullptr;
     }
 };
+
+class Solution {
+   public:
+    ListNode *detectCycle(ListNode *head) {
+        if (!head) return nullptr;
+        ListNode *slow = head, *fast = head;
+        while (fast->next && fast->next->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (fast == slow) {
+                fast = head;
+                while (fast != slow) {
+                    fast = fast->next;
+                    slow = slow->next;
+                }
+                return fast;
+            }
+        }
+        return nullptr;
+    }
+};
 // @lc code=end

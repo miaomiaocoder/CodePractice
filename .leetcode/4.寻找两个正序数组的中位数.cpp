@@ -31,6 +31,7 @@ class Solution {
         }
         if (nums1.size() == i) return nums2[j + k - 1];
         int si = min((int)nums1.size(), i + k / 2), sj = j + k - k / 2;
+        // 注意这里是 si - 1 和 sj - 1
         if (nums1[si - 1] > nums2[sj - 1])
             return find(nums1, i, nums2, sj, k - (sj - j));
         else

@@ -15,7 +15,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-// 与25题处理类似
+// 与25题处理类似，引入头节点可以给解决问题带来方便
 class Solution {
    public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
