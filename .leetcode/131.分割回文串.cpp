@@ -40,4 +40,38 @@ class Solution {
         return res;
     }
 };
+
+class Solution {
+    vector<vector<string>> res;
+    vector<string> path;
+    void backtrack(const string& s, int idx) {
+        if (idx == s.size()) {
+            res.emplace_back(path);
+            return;
+        }
+
+        for (int i = idx; i < s.size(); ++i) {
+            if (isPalind(s, idx, i)) {
+                // [idx, i] 闭区间
+                path.emplace_back(s.substr(idx, i - idx + 1));
+                backtrack(s, i + 1);
+                path.pop_back();
+            } else
+                continue;
+        }
+    }
+    bool isPalind(const string& s, int l, int r) {
+        for (int i = l, j = r; i < j; ++i, --j) {
+            if (s[i] != s[j]) return false;
+        }
+        return true;
+    }
+
+   public:
+    vector<vector<string>> partition(string s) {
+        res.clear(), path.clear();
+        backtrack(s, 0);
+        return res;
+    }
+};
 // @lc code=end

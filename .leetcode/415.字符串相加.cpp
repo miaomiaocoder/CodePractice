@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// 与第2题类似
 class Solution {
    public:
     string addStrings(string num1, string num2) {
