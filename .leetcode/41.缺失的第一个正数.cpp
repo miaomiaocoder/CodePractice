@@ -13,6 +13,7 @@ class Solution {
    public:
     int firstMissingPositive(vector<int>& nums) {
         int n = nums.size();
+        // 注意这个地方要使用 & ，引用，没有使用的话没有修改成功
         for (int& num : nums) {
             if (num <= 0) num = n + 1;
         }

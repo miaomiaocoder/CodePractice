@@ -98,4 +98,31 @@ class Solution {
         return true;
     }
 };
+
+class Solution {
+    ListNode* reverse(ListNode* head) {
+        if (!head || !head->next) return head;
+        ListNode* tail = reverse(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return tail;
+    }
+
+   public:
+    bool isPalindrome(ListNode* head) {
+        ListNode *fast = head, *slow = head;
+        while (fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+        ListNode* cur = reverse(slow);
+        while (cur && head) {
+            if (cur->val != head->val)
+                return false;
+            else
+                cur = cur->next, head = head->next;
+        }
+        return true;
+    }
+};
 // @lc code=end
