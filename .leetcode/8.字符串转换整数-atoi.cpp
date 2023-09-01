@@ -28,6 +28,7 @@ class Solution {
     }
 };
 
+// 这个解法有问题，32位环境
 class Solution {
    public:
     int myAtoi(string s) {

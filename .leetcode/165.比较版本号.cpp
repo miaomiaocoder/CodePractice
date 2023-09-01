@@ -17,6 +17,7 @@ class Solution {
             int y = b == j ? 0 : stoi(version2.substr(j, b - j));
             if (x > y) return 1;
             if (x < y) return -1;
+            // a, b指向的位置是 '.'
             i = a + 1, j = b + 1;
         }
         return 0;

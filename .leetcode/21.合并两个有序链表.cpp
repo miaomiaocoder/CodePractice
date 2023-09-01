@@ -15,13 +15,14 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// 注意释放内存
 class Solution {
    public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         ListNode* cur1 = list1;
         ListNode* cur2 = list2;
-        ListNode* cur = new ListNode(-1);
-        ListNode* dummy = cur;
+        ListNode* dummy = new ListNode(-1);
+        ListNode* cur = dummy;
         while (cur1 && cur2) {
             if (cur1->val > cur2->val) {
                 cur->next = cur2;
@@ -34,7 +35,9 @@ class Solution {
         }
         if (cur1) cur->next = cur1;
         if (cur2) cur->next = cur2;
-        return dummy->next;
+        ListNode* res = dummy->next;
+        delete dummy;
+        return res;
     }
 };
 

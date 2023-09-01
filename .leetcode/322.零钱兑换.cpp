@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+//  外层for循环遍历物品（钱币），内层for遍历背包（金钱总额）
 class Solution {
    public:
     int coinChange(vector<int>& coins, int amount) {

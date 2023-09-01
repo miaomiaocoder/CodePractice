@@ -7,18 +7,21 @@
 // @lc code=start
 // 快速排序
 class Solution {
-    void quikSort(vector<int>&nums, int l, int r) {
+    void quikSort(vector<int>& nums, int l, int r) {
         if (l >= r) return;
         int x = nums[l + r >> 1], i = l - 1, j = r + 1;
         while (i < j) {
-            do ++i; while (nums[i] < x);
-            do --j; while (nums[j] > x);
+            do ++i;
+            while (nums[i] < x);
+            do --j;
+            while (nums[j] > x);
             if (i < j) swap(nums[i], nums[j]);
         }
         quikSort(nums, l, j);
         quikSort(nums, j + 1, r);
     }
-public:
+
+   public:
     vector<int> sortArray(vector<int>& nums) {
         quikSort(nums, 0, nums.size() - 1);
         return nums;
@@ -95,6 +98,38 @@ class Solution {
    public:
     vector<int> sortArray(vector<int>& nums) {
         heapSort(nums);
+        return nums;
+    }
+};
+
+
+// 归并排序
+class Solution {
+    vector<int> tmp;
+    void mergeSort(vector<int>& q, int l, int r) {
+        if (l >= r) return;
+
+        int mid = l + r >> 1;
+        mergeSort(q, l, mid);
+        mergeSort(q, mid + 1, r);
+
+        int i = l, j = mid + 1, k = 0;
+        while (i <= mid && j <= r) {
+            if (q[i] <= q[j])
+                tmp[k++] = q[i++];
+            else
+                tmp[k++] = q[j++];
+        }
+        while (i <= mid) tmp[k++] = q[i++];
+        while (j <= r) tmp[k++] = q[j++];
+
+        for (int i = l, j = 0; i <= r; ++i, ++j) q[i] = tmp[j];
+    }
+
+   public:
+    vector<int> sortArray(vector<int>& nums) {
+        tmp.resize(nums.size(), 0);
+        mergeSort(nums, 0, nums.size() - 1);
         return nums;
     }
 };
