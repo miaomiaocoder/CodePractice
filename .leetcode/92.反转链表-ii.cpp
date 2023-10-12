@@ -33,7 +33,9 @@ class Solution {
         auto c = p->next;
         c->next = b;
         p->next = a;
-        return dummy->next;
+        ListNode* res = dummy->next;
+        delete dummy;
+        return res;
     }
 };
 // @lc code=end

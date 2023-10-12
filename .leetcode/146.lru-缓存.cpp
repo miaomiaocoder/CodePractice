@@ -242,7 +242,7 @@ class LRUCache {
     }
 };
 
-// 注意put那里写法
+// 注意get和put那里的写法
 class LRUCache {
     struct Node {
         Node *prev, *next;
@@ -295,7 +295,6 @@ class LRUCache {
 
     void put(int key, int value) {
         if (get(key) != -1) {
-            hashMap_[key] = head->next;
             head->next->val = value;
             return;
         }

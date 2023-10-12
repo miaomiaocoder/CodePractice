@@ -38,7 +38,9 @@ class Solution {
             c->next = b;
             p = c;
         }
-        return dummy->next;
+        auto res = dummy->next;
+        delete dummy;
+        return res;
     }
 };
 // @lc code=end
